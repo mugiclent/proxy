@@ -14,9 +14,10 @@ internet
     ▼
 nginx :80 / :443
     │  katisha-net
-    ├── vault.katisha.online    → infisical:8080
-    ├── api.katisha.online      → api-gw:8081
-    ├── app.katisha.online      → app:3001
+    ├── vault.katisha.online       → infisical:8080
+    ├── api.katisha.online         → api-gw:8081
+    ├── partner-api.katisha.online → api-gw:8081  (same backend; separate host = isolated auth cookie)
+    ├── app.katisha.online         → app:3001
     ├── katisha.online          → www:80
     ├── www.katisha.online      → www:80
     ├── rabbitmq.katisha.online → rabbitmq:15672
@@ -38,9 +39,10 @@ proxy/
 ├── docker-compose.yml          # container, ports, cert mounts
 ├── nginx.conf                  # global config, resolver, shared headers
 ├── conf.d/
-│   ├── vault.conf              # vault.katisha.online    → infisical:8080
-│   ├── api.conf                # api.katisha.online      → api-gw:8081
-│   ├── app.conf                # app.katisha.online      → app:3001
+│   ├── vault.conf              # vault.katisha.online       → infisical:8080
+│   ├── api.conf                # api.katisha.online         → api-gw:8081
+│   ├── partner-api.conf        # partner-api.katisha.online → api-gw:8081 (operator portal)
+│   ├── app.conf                # app.katisha.online         → app:3001
 │   ├── www.conf                # katisha.online + www    → www:80
 │   ├── rabbitmq.conf           # rabbitmq.katisha.online → rabbitmq:15672
 │   └── cdn.conf                # cdn.katisha.online      → cdn:8333
@@ -96,6 +98,7 @@ All existing `conf.d/` files already include this.
 |---|---|---|
 | `vault.katisha.online` | `infisical` | `8080` |
 | `api.katisha.online` | `api-gw` | `8081` |
+| `partner-api.katisha.online` | `api-gw` | `8081` |
 | `app.katisha.online` | `app` | `3001` |
 | `katisha.online` / `www.katisha.online` | `www` | `80` |
 | `rabbitmq.katisha.online` | `rabbitmq` | `15672` |
