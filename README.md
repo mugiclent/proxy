@@ -22,7 +22,7 @@ nginx :80 / :443
     ├── www.katisha.online      → www:80
     ├── rabbitmq.katisha.online → rabbitmq:15672
     ├── cdn.katisha.online      → cdn:8333
-    └── telemetry.katisha.online → telemetry-svc:8080  (direct, unauthenticated — bus GPS ingest + SSE)
+    └── telemetry.katisha.online → telemetry-svc:8093  (direct, unauthenticated — bus GPS ingest + SSE)
 ```
 
 **Plug-n-play upstreams** — nginx uses Docker's internal DNS resolver
@@ -47,7 +47,7 @@ proxy/
 │   ├── www.conf                # katisha.online + www    → www:80
 │   ├── rabbitmq.conf           # rabbitmq.katisha.online → rabbitmq:15672
 │   ├── cdn.conf                # cdn.katisha.online      → cdn:8333
-│   └── telemetry.conf          # telemetry.katisha.online → telemetry-svc:8080 (direct, unauthenticated)
+│   └── telemetry.conf          # telemetry.katisha.online → telemetry-svc:8093 (direct, unauthenticated)
 ├── actions.env                 # fill and use to set GitHub secrets
 ├── .github/workflows/
 │   └── deploy.yml
@@ -105,4 +105,4 @@ All existing `conf.d/` files already include this.
 | `katisha.online` / `www.katisha.online` | `www` | `80` |
 | `rabbitmq.katisha.online` | `rabbitmq` | `15672` |
 | `cdn.katisha.online` | `cdn` | `8333` |
-| `telemetry.katisha.online` | `telemetry-svc` | `8080` |
+| `telemetry.katisha.online` | `telemetry-svc` | `8093` |
